@@ -1,11 +1,11 @@
 import Products from "./components/products";
 
 function App() {
-  return (
-    <>
-      <Products />
-    </>
-  );
+    return (
+        <>
+            <Products />
+        </>
+    );
 }
 
 export default App;
