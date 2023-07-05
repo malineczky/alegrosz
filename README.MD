@@ -37,3 +37,14 @@ URL
 -   po ? zmienna, np. s="" - wszystko to nie jest interpretowane przez przeglądarkę
     zmienne oddziela się &; query params
 -   / na końcu to konkretny fragment
+
+## algorytm do edycji
+
+-   tworze nowy komponent do edycji (pusty)
+-   podpinam do routera
+-   w product detail muszę zrobić przekierowanie na komponent edycji (Link)
+-   w komponencie edycji robię formularz
+-   pobieram dane z serwera po id i wypełniam formularz
+-   użytkownik po edycji klika w zapisz
+-   wysyłamy dane do serwera
+-   robimy przekierowanie na stronę tego produktu
