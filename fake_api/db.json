@@ -1,20 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Smartfon Iphone",
-      "description": "Najnowszy smartfon z zaawansowanymi funkcjami.",
-      "price": "12",
-      "stockCount": "5"
-    },
-    {
-      "id": 2,
-      "name": "Telewizor LED",
-      "description": "Duży telewizor LED o wysokiej rozdzielczości.",
-      "price": 1499.99,
-      "stockCount": 5
-    },
-    {
       "id": 3,
       "name": "Laptop ABC",
       "description": "Lekki i przenośny laptop z mocnym procesorem.",
