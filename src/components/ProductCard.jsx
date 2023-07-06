@@ -7,10 +7,17 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Chip from "@mui/material/Chip";
-
 import imagePlaceholder from "../assets/product-placeholder.png";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContex";
 
 export default function ProductCard({ name, price, id }) {
+    const [{ total }, setCart] = useContext(CartContext);
+
+    function addProductToCart() {
+        setCart({ total: total + parseFloat(price) });
+    }
+
     return (
         <Card sx={{ maxWidth: 345, flexGrow: 1, width: "100%" }}>
             <CardMedia
@@ -26,9 +33,19 @@ export default function ProductCard({ name, price, id }) {
                     <Chip label={`$${price}`} />
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions
+                sx={{ display: "flex", justifyContent: "space-between" }}
+            >
                 <Button size="small">
                     <Link to={`/product/${id}`}>Details</Link>
+                </Button>
+                <Button
+                    onClick={addProductToCart}
+                    size="small"
+                    variant="outlined"
+                    color="success"
+                >
+                    Quick buy
                 </Button>
             </CardActions>
         </Card>

@@ -1,11 +1,16 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { TextField } from "@mui/material";
+import { CartContext } from "../context/CartContex";
 
 function Product() {
     const { productId } = useParams();
     const [product, setProduct] = useState(null);
+    const [quantity, setQuantity] = useState(0);
+
+    const [{ total }, setCart] = useContext(CartContext);
 
     const navigate = useNavigate();
 
@@ -28,7 +33,7 @@ function Product() {
 
     async function deleteProduct(id) {
         return await fetch(`http://localhost:3000/products/${id}`, {
-            method: "delete", // serwer usuwa dane
+            method: "delete",
         });
     }
 
@@ -41,26 +46,72 @@ function Product() {
         return <h2>Loader.....</h2>;
     }
 
+    function AddProductToCart() {
+        setCart({
+            total: total + product.price * quantity,
+        });
+    }
+
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <Typography sx={{ mb: 3 }} variant="h2" component="h1">
                 {product.name}
             </Typography>
 
-            <p>{product.description}</p>
-            <span>Price ${product.price}</span>
-            <br />
+            <div>
+                <p>{product.description}</p>
+                <span>Price ${product.price}</span>
+            </div>
 
-            {/* 
-            tu wstaw button z AddProduct i przy linkach */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <TextField
+                    id="quantity"
+                    name="qunatity"
+                    variant="filled"
+                    value={quantity}
+                    onChange={(event) =>
+                        setQuantity(event.target.valueAsNumber)
+                    }
+                    type="number"
+                    size="small"
+                />
+                <Button
+                    onClick={AddProductToCart}
+                    sx={{ marginRight: 1 }}
+                    variant="contained"
+                    color="success"
+                    size="large"
+                >
+                    Buy
+                </Button>
+            </div>
 
-            <button onClick={handleDelete}>Delete Product</button>
-            <Link to={`/edit-product/${productId}`}>Edit {product.name}</Link>
-            <Link to="/">Back</Link>
+            <div>
+                <Button
+                    onClick={handleDelete}
+                    sx={{ marginRight: 1 }}
+                    variant="contained"
+                    color="warning"
+                >
+                    Delete Product
+                </Button>
+
+                <Button sx={{ marginRight: 1 }} variant="contained">
+                    <Link to={`/edit-product/${productId}`}>
+                        Edit {product.name}
+                    </Link>
+                </Button>
+
+                <Button
+                    sx={{ marginRight: 1 }}
+                    variant="contained"
+                    color="success"
+                >
+                    <Link to="/">Back</Link>
+                </Button>
+            </div>
         </div>
     );
 }
 
 export default Product;
-
-// style={{padding: 10, margin: 10: display: "inline-block" }}
