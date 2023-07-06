@@ -1,5 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 function Product() {
     const { productId } = useParams();
@@ -41,10 +43,17 @@ function Product() {
 
     return (
         <div>
-            <h1>{product.name}</h1>
+            <Typography sx={{ mb: 3 }} variant="h2" component="h1">
+                {product.name}
+            </Typography>
+
             <p>{product.description}</p>
             <span>Price ${product.price}</span>
             <br />
+
+            {/* 
+            tu wstaw button z AddProduct i przy linkach */}
+
             <button onClick={handleDelete}>Delete Product</button>
             <Link to={`/edit-product/${productId}`}>Edit {product.name}</Link>
             <Link to="/">Back</Link>

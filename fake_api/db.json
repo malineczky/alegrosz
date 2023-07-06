@@ -55,6 +55,13 @@
       "price": "1",
       "stockCount": "2143",
       "id": 13
+    },
+    {
+      "name": "Apple watch",
+      "description": "Zegarek",
+      "price": "999.44",
+      "stockCount": "23",
+      "id": 14
     }
   ]
 }

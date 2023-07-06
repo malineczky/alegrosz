@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
 function AddProduct() {
     const [name, setName] = useState("");
@@ -40,56 +44,73 @@ function AddProduct() {
 
     return (
         <>
-            <div>
-                <h1>Add new product</h1>
-                <form onSubmit={hanldeAddProduct}>
+            <Grid item xs={12} md={8}>
+                <Typography sx={{ mb: 3 }} variant="h2" component="h1">
+                    Add new product
+                </Typography>
+
+                <form
+                    onSubmit={hanldeAddProduct}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 15,
+                    }}
+                >
                     <div>
-                        <label htmlFor="">Name</label>
-                        <input
-                            type="text"
+                        <TextField
                             id="name"
+                            label="Name"
+                            variant="filled"
+                            fullWidth
                             value={name}
                             onChange={(event) => setName(event.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="description">Description</label>
-                        <textarea
-                            name="description"
+                        <TextField
                             id="description"
-                            cols="30"
-                            rows="10"
+                            label="Description"
+                            variant="filled"
+                            fullWidth
                             value={description}
                             onChange={(event) =>
                                 setDescription(event.target.value)
                             }
-                        ></textarea>
+                        />
                     </div>
                     <div>
-                        <label htmlFor="price">Price</label>
-                        <input
-                            type="number"
-                            name="price"
+                        <TextField
                             id="price"
+                            label="Price"
+                            variant="filled"
+                            fullWidth
                             value={price}
                             onChange={(event) => setPrice(event.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="stockCount">Stock count</label>
-                        <input
-                            type="number"
-                            name="stockCount"
-                            id="stockCount"
+                        <TextField
+                            id="number"
+                            label="stockCount"
+                            variant="filled"
+                            fullWidth
                             value={stockCount}
                             onChange={(event) =>
                                 setStockCount(event.target.value)
                             }
                         />
                     </div>
-                    <button type="submit">Add product</button>
+
+                    <Button
+                        sx={{ alignSelf: "flex-end" }}
+                        type="submit"
+                        variant="text"
+                    >
+                        Add product
+                    </Button>
                 </form>
-            </div>
+            </Grid>
         </>
     );
 }
