@@ -62,6 +62,13 @@
       "price": "999.44",
       "stockCount": "23",
       "id": 14
+    },
+    {
+      "name": "Apple Iphone",
+      "description": "Phone",
+      "price": "766.99",
+      "stockCount": "341",
+      "id": 15
     }
   ]
 }

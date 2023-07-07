@@ -23,7 +23,7 @@ const router = createBrowserRouter([
                 element: <AddProduct />,
             },
             {
-                path: "edit-product/:productId", //po kropce żeby wiedział, jaki produkt ma edytować po id
+                path: "edit-product/:productId",
                 element: <EditProduct />,
             },
         ],

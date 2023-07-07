@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../context/CartContex";
+import { CartContext } from "../context/CartContext.jsx";
 
 function Navbar() {
     const [{ total }, setCart] = useContext(CartContext);
@@ -45,7 +45,7 @@ function Navbar() {
                                 variant="h6"
                                 component="div"
                             >
-                                Total cost: ${total}
+                                Cart: ${total}
                             </Typography>
                             <Button
                                 onClick={() => setCart({ total: 0 })}

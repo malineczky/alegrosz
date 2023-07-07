@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { TextField } from "@mui/material";
-import { CartContext } from "../context/CartContex";
+import { CartContext } from "../context/CartContext.jsx";
 
 function Product() {
     const { productId } = useParams();
@@ -46,7 +46,7 @@ function Product() {
         return <h2>Loader.....</h2>;
     }
 
-    function AddProductToCart() {
+    function addProductToCart() {
         setCart({
             total: total + product.price * quantity,
         });
@@ -66,17 +66,21 @@ function Product() {
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <TextField
                     id="quantity"
-                    name="qunatity"
+                    label="Quantity"
                     variant="filled"
                     value={quantity}
                     onChange={(event) =>
-                        setQuantity(event.target.valueAsNumber)
+                        setQuantity(
+                            event.target.valueAsNumber < 0
+                                ? 0
+                                : event.target.valueAsNumber
+                        )
                     }
                     type="number"
                     size="small"
                 />
                 <Button
-                    onClick={AddProductToCart}
+                    onClick={addProductToCart}
                     sx={{ marginRight: 1 }}
                     variant="contained"
                     color="success"

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
+
+import ProductCard from "./ProductCard.jsx";
 import Box from "@mui/material/Box";
 
 function Products() {
@@ -33,7 +34,7 @@ function Products() {
                 <ProductCard
                     name={product.name}
                     price={`${product.price}`}
-                    key={product.id} // potrzebne ze względu na map,. żeby react wqiedział skąd ma renderować
+                    key={product.id} // potrzebne ze względu na .map, żey React wiedzial skąd ma renderować
                     id={product.id}
                 />
             ))}
