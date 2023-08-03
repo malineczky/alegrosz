@@ -1,39 +1,45 @@
 import { useEffect, useState } from "react";
 
+import ProductCard from "./ProductCard.jsx";
+import Box from "@mui/material/Box";
+
 function Products() {
-  const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    getData(controller.signal).then((data) => setProducts(data));
+    useEffect(() => {
+        const controller = new AbortController();
+        getData(controller.signal).then((data) => setProducts(data));
 
-    getData().then((data) => setProducts(data));
+        return () => {
+            controller.abort();
+        };
+    }, []);
 
-    return () => {
-      controller.abort();
-    };
-  }, []);
+    function getData(signal) {
+        return fetch("http://localhost:3000/products", { signal }).then(
+            (response) => response.json()
+        );
+    }
 
-  function getData(signal) {
-    return fetch("http://localhost:3000/products", { signal }).then(
-      (response) => response.json()
-    );
-  }
-
-  return (
-    <>
-      {products.map((product) => (
-        <div
-          key={product.id}
-          style={{ border: "1px solid black", padding: 10, margin: 10 }}
+    return (
+        <Box
+            sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 3,
+                justifyContent: "center",
+            }}
         >
-          <h2>{product.name}</h2>
-          <p>{product.category}</p>
-          <p>{product.price}</p>
-        </div>
-      ))}
-    </>
-  );
+            {products.map((product) => (
+                <ProductCard
+                    name={product.name}
+                    price={`${product.price}`}
+                    key={product.id} // potrzebne ze względu na .map, żey React wiedzial skąd ma renderować
+                    id={product.id}
+                />
+            ))}
+        </Box>
+    );
 }
 
 export default Products;

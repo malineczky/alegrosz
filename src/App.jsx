@@ -1,11 +1,11 @@
-import Products from "./components/products";
+import Products from "./components/Products";
 
 function App() {
-  return (
-    <>
-      <Products />
-    </>
-  );
+    return (
+        <>
+            <Products />
+        </>
+    );
 }
 
 export default App;
