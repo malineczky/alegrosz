@@ -1,50 +1,43 @@
 # Alegrosz
 
-tworzenie komponentu
+![](/screenshot.png)
 
-HTTP
-kody błędów:
+## Description
 
-1. info errors
-2. success errors - np. podpięcie css
-3. readirect errors - np. not modified (nie wyłączyłam cache z przeglądarki),
-4. client errors - np. bad request -złe dane, 401- nie wysłałam autentyfikacji użytkownika
-5. backend errors
+_Alegrosz_ is a sales web platform that allows users to add, edit, and delete product or transfer to the basket.
 
-REST API!!!
+## How to run the application
 
-rest Api wymaga HTTP
-oparty o HTPP:
-methods
-status codes
-ednpoints
+To run it locally, follow these steps:
 
-URL
+1. Clone the repository with the application source code to your computer:
+   git clone https://github.com/malineczky/alegrosz.git
 
--   protokół komnikacyjny https:// (s to szyfrowanie secure layer)
--   www - rodzaj zasobu, strona internetowa
--   subdomain
--   domena
--   com - domena najwyższego poziomu
--   endpoint/path/source (np. .pl/products)
+1. Install Dependencies: Navigate to the application directory and install the required dependencies using npm:
 
-    metody:
-    get pobranie
-    post - stworzenie czegoś
-    put / patch - modyfikowwanie
-    delete - usunięcie
+    ```
+    $ cd alegrosz
+    $ npm install
+    $ npm install json-server
+    ```
 
--   po ? zmienna, np. s="" - wszystko to nie jest interpretowane przez przeglądarkę
-    zmienne oddziela się &; query params
--   / na końcu to konkretny fragment
+1. Run the Application: After installing the dependencies, you can start the application locally using the following commands:
+    ```
+    $ npm run api
+    $ npm run dev
+    ```
 
-## algorytm do edycji
+## Todo
 
--   tworze nowy komponent do edycji (pusty)
--   podpinam do routera
--   w product detail muszę zrobić przekierowanie na komponent edycji (Link)
--   w komponencie edycji robię formularz
--   pobieram dane z serwera po id i wypełniam formularz
--   użytkownik po edycji klika w zapisz
--   wysyłamy dane do serwera
--   robimy przekierowanie na stronę tego produktu
+-   the functionality of uploading pictures to the product
+
+## Technology used
+
+-   React
+-   JavaScript
+-   SCSS
+-   Material-UI
+
+## Author
+
+Aleksandra Malinka-Kot
