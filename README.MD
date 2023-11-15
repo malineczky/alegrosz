@@ -4,7 +4,7 @@
 
 ## Description
 
-_Alegrosz_ is a sales web platform that allows users to add, edit, and delete product or transfer to the basket.
+_Alegrosz_ is a sales web platform that allows users to add, edit, and delete product or transfer to the BASKET. The app was created as a part of excersise with my mentor in Coders Lab IT School. 
 
 ## How to run the application
 
